@@ -7,10 +7,9 @@ const inputArg = process.argv.slice(2)
 
 const timeStamp = new Date().toISOString();
 
-
 const text = inputArg.join(" ").concat("\n")
 
-    const message = `${text} ${timeStamp}\n`
+const message = `${text} ${timeStamp}\n`
 
 console.log(text)
 if(!text){
@@ -20,7 +19,6 @@ if(!text){
 }
 
 const filePath = path.join(__dirname,"log.txt");
-
 
 fs.appendFile(filePath,message,{encoding: "utf-8"},()=>{
     
@@ -36,5 +34,4 @@ fs.appendFile(filePath,message,{encoding: "utf-8"},()=>{
 //     else{
 //         console.log(text,"is written")
 //     }
-
 // })
