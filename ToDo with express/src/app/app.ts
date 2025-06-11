@@ -1,4 +1,4 @@
-import e from "express";
+import e, { NextFunction } from "express";
 import express, { Application, Request, Response } from "express";
 import fs  from 'fs'
 import path from "path";
@@ -19,10 +19,22 @@ app.use("/todos",todosRouter);
 
 // data base pass dk7LeQXPtjYWVHuX
 
-app.get('/',(req: Request,res : Response)=>{
+app.get('/',(req: Request,res : Response,next:NextFunction)=>{
    
-    res.send("Hello World!!! he he")
-})
+    console.log({
+         url: req.url,
+         method:req.method,
+         header:req.header
+    })
+    next();
+},
+(req: Request,res : Response)=>{
+   
+    res.send("Hello World!!! he he")  
+}
+)
+
+
 // app.get('/todos',(req: Request,res : Response)=>{
 
 //    console.log(req.query)

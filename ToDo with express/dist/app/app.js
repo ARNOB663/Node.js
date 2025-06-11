@@ -12,7 +12,14 @@ const userRouter = express_1.default.Router();
 app.use("/users", userRouter);
 app.use("/todos", todos_routes_1.todosRouter);
 // data base pass dk7LeQXPtjYWVHuX
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
+    console.log({
+        url: req.url,
+        method: req.method,
+        header: req.header
+    });
+    next();
+}, (req, res) => {
     res.send("Hello World!!! he he");
 });
 // app.get('/todos',(req: Request,res : Response)=>{
