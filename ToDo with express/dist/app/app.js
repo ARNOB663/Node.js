@@ -32,7 +32,7 @@ app.get('/', (req, res, next) => {
     next();
 }, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        promises_1.console.log(something);
+        // console.log(something)
         res.send("welcome to the todo app");
     }
     catch (_a) {
@@ -40,12 +40,8 @@ app.get('/', (req, res, next) => {
         res.status(400).json({ message: "something went wrong", error: console_1.error });
     }
 }));
-// app.get('/todos',(req: Request,res : Response)=>{
-//    console.log(req.query)
-//     const data = fs.readFileSync(filePath,{encoding:"utf-8"});
-//    //  console.log(data)
-//     res.send(data)
-// })
-//
+app.use((req, res, next) => {
+    res.status(404).json({ message: "route nt found" });
+});
 //[app] - express.json - [...] - [todosrouter] - [rootrouter] - [...] - [post todo create todo]
 exports.default = app;

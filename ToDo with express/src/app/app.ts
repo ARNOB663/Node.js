@@ -32,7 +32,7 @@ app.get('/',(req: Request,res : Response,next:NextFunction)=>{
 },
 async (req: Request,res : Response)=>{
    try{
-    console.log(something)
+   // console.log(something)
     res.send("welcome to the todo app")
 
    }
@@ -43,17 +43,10 @@ async (req: Request,res : Response)=>{
 }
 )
 
-// app.get('/todos',(req: Request,res : Response)=>{
+app.use((req:Request,res:Response,next:NextFunction)=>{
+    res.status(404).json({message:"route nt found"})
 
-//    console.log(req.query)
-
-//     const data = fs.readFileSync(filePath,{encoding:"utf-8"});
-//    //  console.log(data)
-//     res.send(data)
-
-// })
-//
-
+})
 
 //[app] - express.json - [...] - [todosrouter] - [rootrouter] - [...] - [post todo create todo]
 
