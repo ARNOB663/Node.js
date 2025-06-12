@@ -3,6 +3,8 @@ import express, { Application, Request, Response } from "express";
 import fs  from 'fs'
 import path from "path";
 import { todosRouter } from "./todos/todos.routes";
+import { console } from "inspector/promises";
+import { error } from "console";
 const app : Application = express()
 
 
@@ -28,12 +30,18 @@ app.get('/',(req: Request,res : Response,next:NextFunction)=>{
     })
     next();
 },
-(req: Request,res : Response)=>{
-   
-    res.send("Hello World!!! he he")  
+async (req: Request,res : Response)=>{
+   try{
+    console.log(something)
+    res.send("welcome to the todo app")
+
+   }
+   catch{
+    console.log(error,error)
+    res.status(400).json({message:"something went wrong",error})
+   }
 }
 )
-
 
 // app.get('/todos',(req: Request,res : Response)=>{
 
