@@ -6,7 +6,7 @@ import app from "./app";
 
 let server: Server;
 
-const URL = "mongodb+srv://mongodb:a123456@cluster0.axaw2bo.mongodb.net/todosDB?retryWrites=true&w=majority&appName=Cluster0"
+const URL = "mongodb+srv://mongodb:a123456@cluster0.axaw2bo.mongodb.net/notesDB?retryWrites=true&w=majority&appName=Cluster0"
 let PORT= 5000
 async function main() {
 
@@ -16,9 +16,7 @@ async function main() {
          server = app.listen(PORT,()=>{
             console.log(`App in listening on port ${PORT}`)
          })
-
-}
-    
+       }
     catch(error){
         console.log(error)
     }
