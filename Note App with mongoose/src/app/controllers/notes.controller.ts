@@ -26,14 +26,14 @@ notesRoutes.post('/create-note',async(req:Request,res:Response)=>{
     res.status(201).json({
         success:true,
         message:"Note Created successfuly",
-        note:body
+        note:note
     })
 
 })
 //get all note
 notesRoutes.get('/',async(req:Request,res:Response)=>{
 
-    const notes = await Note.find()
+    const notes = await Note.find().populate("user")//populate => runs a querry in the user model and gets the user information
    
     res.status(201).json({
         success:true,

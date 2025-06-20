@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { User } from "../models/user.model";
 import  express ,{Request,Response}  from 'express';
-import { parse } from '../../../node_modules/acorn/dist/acorn.d';
+
 
 
 export const userRouter = express.Router()
@@ -18,20 +18,21 @@ const CreateUserZodSchema = z.object({
 userRouter.post('/create-user',async (req:Request,res:Response) =>{
 
 try{
-    const body = await CreateUserZodSchema.parseAsync(req.body)
+    //Zod validation
+    // const body = await CreateUserZodSchema.parseAsync(req.body)
+    const body = req.body
 
-    console.log(body,"zod body")
+    // console.log(body,"zod body")
 
 const users = await User.create(body)
 
 res.status(201).json({
     success: true,
     message: "user created succesfully",
-    user :{}
+    user :users
 })
 }
 catch(error:any){
-
     res.status(400).json({
     success: false,
     message: error.message,

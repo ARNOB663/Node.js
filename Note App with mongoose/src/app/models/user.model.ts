@@ -1,7 +1,15 @@
     import { model, Schema } from "mongoose";
-    import { IUser } from "../interfaces/user.interface";
+    import { IAddress, IUser } from "../interfaces/user.interface";
     import { Admin } from "mongodb";
     import validator from "validator"
+import { number, string } from "zod";
+
+
+const addressSchema = new Schema<IAddress>({
+        city: {type: String},
+        street:{type: String},
+        zip: {type:Number}
+},{_id:false})
 
 
     const userSchema = new Schema<IUser>({
@@ -32,7 +40,7 @@
             //         return `Email ${props.value} is not valid email`
             //     }
             // }
-             validate:[validator.isEmail,"Invalid Email {VALUE"],
+             validate:[validator.isEmail,"Invalid Email {}"],
         },
 
     password:{
@@ -53,6 +61,9 @@
         required:true,
         min:[18,'Age must be above 18, got {VALUE}'],
         max:60
+    },
+    address:{
+        type: addressSchema
     }
 
     },{versionKey:false,timestamps:true})
