@@ -26,7 +26,5 @@ tags:{
     color: {type:String , default:"gray"} 
 }
 },{versionKey:false,timestamps:true}
-
 )
-
 export const Note = mongoose.model("Note",noteSchema)
